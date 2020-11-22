@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splatter Run</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <input id="txtEmail" type="email" placeholder="Email">
+        <input id="txtPassword" type="password" placeholder="Password">
+        <button id="btnLogin" class="btn btn-action">Log in</button>
+        <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+        <button id="btnLogout" class="btn btn-action hide">Log Out</button>
+    </div>
+    <div id = 'root'></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type = 'module' src = 'login.js'></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+
+    </script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyDUsTofzxg1qguG8LXv18lbb2G4JbUqtpo",
+        authDomain: "comp-426-final-824f1.firebaseapp.com",
+        databaseURL: "https://comp-426-final-824f1.firebaseio.com",
+        projectId: "comp-426-final-824f1",
+        storageBucket: "comp-426-final-824f1.appspot.com",
+        messagingSenderId: "96551300072",
+        appId: "1:96551300072:web:659cf8a809423dd9dd925d",
+        measurementId: "G-4SDCCT28QK"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

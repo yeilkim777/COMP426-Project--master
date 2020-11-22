@@ -1,0 +1,49 @@
+#board {
+    width: 715px;
+    margin: 0px;
+}
+
+/* div {
+    margin: 10px;
+} */
+
+table {
+    width: 715px;
+    padding: 0px;
+}
+
+td {
+    width: 55px;
+    height: 55px;
+    border: black 1px dotted;
+}
+
+#player {
+    background-color: white;
+
+    background-image: url('https://art.pixilart.com/45cb9d27c83cff1.gif'); 
+    /* background-image: url('https://i.gifer.com/2INs.gif');  */
+    /* background-image: url('https://art.pixilart.com/4fbab55ac97629a.gif');  */
+    /* background-image: url('https://thumbs.gfycat.com/RaggedSlushyAustralianfreshwatercrocodile-max-1mb.gif');  */
+    /* background-image: url('https://25.media.tumblr.com/ad3d0047110bc1b6ad6f909e0917c290/tumblr_mqo3l1ESlk1rt67t1o1_500.gif');  */
+    background-size: 55px 55px;
+    border: 0px;
+    border-radius: 1px;
+}
+
+.filled {
+    background-color: greenyellow;
+}
+
+
+
+/* Panel and buttons */
+
+#buttonPanel {
+    width: 650px;
+}
+
+button {
+    width: 100px;
+    height: 75px
+}
