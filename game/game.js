@@ -1,13 +1,13 @@
 import { levelArray } from "./getLevel.js"
 import { boardGet, boardSet } from "./backend-firestore.js"
-import { getUser } from "../login/login.js"
+//import { getUser } from "../login/login.js"
 
 
 let x = 13;
 let y = 13; 
 let board = [];
 
-let testUser = getUser()
+//let testUser = getUser()
 
 let player = {
     //name: substring(0,testUser.email.indexOf('@')),
