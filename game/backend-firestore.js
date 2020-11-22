@@ -6,7 +6,7 @@ const firebaseConfig = {
     storageBucket: "comp-426-final-824f1.appspot.com",
     messagingSenderId: "96551300072",
     appId: "1:96551300072:web:659cf8a809423dd9dd925d",
-    measurementId: "G-4SDCCT28QK"
+    measurementId: "G-4SDCCT28QK" 
 };
 firebase.initializeApp(firebaseConfig)
 // const db = firebase.firestore();
