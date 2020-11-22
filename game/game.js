@@ -10,8 +10,8 @@ let board = [];
 let testUser = getUser()
 
 let player = {
-    name: substring(0,testUser.email.indexOf('@')),
-    //name: "player.name",
+    //name: substring(0,testUser.email.indexOf('@')),
+    name: "player.name",
     x: 0,
     y: 0,
     moves: 0,
