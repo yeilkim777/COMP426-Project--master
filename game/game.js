@@ -1,16 +1,14 @@
 import { levelArray } from "./getLevel.js"
 import { boardGet, boardSet } from "./backend-firestore.js"
-//import { getUser } from "../login/login.js"
+//import { firebaseUser } from "./login/login.js"
 
 
 let x = 13;
-let y = 13; 
+let y = 13;
 let board = [];
 
-//let testUser = getUser()
-
 let player = {
-    //name: substring(0,testUser.email.indexOf('@')),
+    //name: "substring(0,firebaseUser.email.indexOf('@'))",
     name: "player.name",
     x: 0,
     y: 0,
@@ -49,25 +47,43 @@ export async function loadGame() {
     timetable.id = 'times'
     let movetable = document.createElement('table')
     movetable.id = 'moves'
-    let topDiv = document.createElement('div')
-    topDiv.id = 'topDiv'
-    topDiv.style = 'display: flex; flex-direction: row; align-content: space-between'
-    topDiv.innerHTML = (`<div id = 'timeboard' style = 'align-self: flex-start'><h1>Time: ${player.time}</h1></div>`)
-    topDiv.innerHTML += (`<button id = 'time'>Save Time</button>`)
-    topDiv.innerHTML += (`<button id = 'move'>Save Move</button>`)
-    topDiv.innerHTML += (`<div id = 'moveboard' style = ''><h1>Moves: ${player.moves}</h1></div>`)
-    $root.append(topDiv)
-    let breakCol2 = document.createElement('div')
-    breakCol2.class = 'break'
-    breakCol2.style = 'flex-basis:100%'
-    $root.append(breakCol2)
-    $root.append(timetable)
-    $root.append(levelBuild(player.level))
-    $root.append(movetable)
-    let breakCol = document.createElement('div')
-    breakCol.class = 'break'
-    breakCol.style = 'flex-basis:100%'
-    $root.append(breakCol)
+
+    let leftDiv = document.createElement('div')
+    leftDiv.id = 'leftDiv'
+    leftDiv.style = 'display:flex; flex-direction: column;'
+    leftDiv.innerHTML = (`<h1 style=''>TIME</h1>`)
+    leftDiv.append(timetable)
+    $root.append(leftDiv)
+
+    let midDiv = document.createElement('div')
+    midDiv.id = 'midDiv'
+    midDiv.style ='display:flex; flex-direction: column; align-items: center    '
+    let midDivTop = document.createElement('div')
+    midDivTop.id = 'midDivTop'
+    midDivTop.style = 'display:flex;justify-content: space-between'
+    midDivTop.innerHTML = (`<button style='box-shadow: 0 6px #999;border-radius:32px; border:solid;background-color: royalblue;color:white;font-family: Lucida Sans Unicode' id = 'time'>Save Time</button>`)
+    midDivTop.innerHTML += (`<div style='margin-right: 20px;margin-left:20px; width: 200px'id = 'timeboard'><h1>Time: ${player.time}</h1></div>`)
+    midDivTop.innerHTML += (`<div id="currlevel"><h1 style='text-align: center;font-weight: bold; font-family: Georgia'> Level: ${player.level}</h1></div>`)
+    midDivTop.innerHTML +=  (`<div style = 'text-align: center;margin-right: 20px;margin-left:20px; width: 150px' id = 'moveboard'><h1>Moves: ${player.moves}</h1></div>`)
+    midDivTop.innerHTML +=  (`<button style='box-shadow: 0 6px #999;    border-radius:32px; border:solid;background-color: red;color:white;font-family: Lucida Sans Unicode'id = 'move'>Save Move</button>`)
+    midDiv.append(midDivTop)
+    midDiv.append(levelBuild(player.level))
+    let buttonPanel = document.createElement('div')
+    buttonPanel.id = 'buttonPanel'
+    buttonPanel.style = 'display:flex; justify-content: space-between; '
+    buttonPanel.innerHTML = `<button style='box-shadow: 0 6px #999;border-radius:32px;background-color: purple;color:white;font-family: Lucida Sans Unicode' id = 'previous'> Previous</button>
+                            <button style='box-shadow: 0 6px #999;border-radius:32px;background-color: darkorange;color:white;font-family: Lucida Sans Unicode' id = 'reset'>Reset</button>
+                            <button style='box-shadow: 0 6px #999;border-radius:32px;background-color: green;color:white;font-family: Lucida Sans Unicode'id = 'next'>Next</button>`
+
+    midDiv.append(buttonPanel)
+    $root.append(midDiv)
+
+    let rightDiv = document.createElement('div')
+    rightDiv.id = 'rightDiv'
+    rightDiv.style ='display:flex; flex-direction: column;align-items:flex-end'
+    rightDiv.innerHTML = (`<h1 style=''>MOVES</h1>`)
+    rightDiv.append(movetable)
+    $root.append(rightDiv)
     console.log(timeScoreBoard);
     console.log(moveScoreBoard);
     timeTableGenerator();
@@ -76,13 +92,13 @@ export async function loadGame() {
         timeTableGenerator(); 
         topTime();
         topMove();      
-    }, 5000);
+    }, 10000);
 
     window.setInterval(function () {
         moveTableGenerator()
         topTime();
         topMove();
-    }, 5000);
+    }, 10000);
     $(document).keydown(async function (e) {
         switch (e.keyCode) { // move to seperate function and make it return something
             case 39:
@@ -142,7 +158,6 @@ export async function loadGame() {
                 }
                 break;
             case 37:
-                e.preventDefault
                 if (!player.won) {
                     if (firstMove) {
                         stopWatch = Date.now();
@@ -209,22 +224,19 @@ export async function loadGame() {
         }
     })
 
-    $root.append(`<div id = 'buttonPanel' style='align-self: center'>
-        <button id = 'previous' style='align-self: center'> Previous</button>
-        <button id = 'reset' style='align-self: center'>Reset</button>
-        <button id = 'next' style='align-self: center'>Next</button>
-    </div>`)
-    
-    const $scores = $('#scores');
-
-    // place holder
+    let righterDiv = document.createElement('righterDiv')
+    righterDiv.id = 'righterDiv'
+    righterDiv.style = 'display:flex; flex-direction: column;justify-content: center;'
+    righterDiv.innerHTML = (`<div id = 'scorest'></div>`)
     let breakCol3 = document.createElement('div')
     breakCol3.class = 'break'
-    breakCol3.style = 'flex-basis:100%'
-    $root.append(breakCol3)
-    
-    $root.append(`<div id = 'scorest'></div>`)
-    $root.append(`<div id = 'scoresm'></div>`)
+    breakCol3.style = ''
+    righterDiv.append(breakCol3)
+    righterDiv.innerHTML += (`<div id = 'scoresm'></div>`)
+    $root.append(righterDiv)
+
+    let lefterDiv = document.createElement('lefterDiv')
+    $root.prepend()
 
     $root.on('click', "#previous", previousBoard);//self explantory
     $root.on('click', "#reset", resetBoard);
@@ -234,14 +246,12 @@ export async function loadGame() {
     topTime();
     topMove();
 
-
     // create keyboard functionality all of them
 
 }
 
 export const levelBuild = function (number) {
     number -= 1;
-
 
     let tableDiv = document.createElement('div');
     tableDiv.setAttribute('id', 'board')
@@ -263,10 +273,9 @@ export const levelBuild = function (number) {
             rowFiller.setAttribute('class', j)
 
             if (board[i][j] == 0) {
-                rowFiller.setAttribute('style', 'background-color: #a9a9a9');
-                //rowFiller.setAttribute('style', 'border-radius: 10px');
+                rowFiller.setAttribute('style', 'background-color: gray');
             } else if (board[i][j] == 1) {
-                //rowFiller.setAttribute('style', 'background-color: white');
+                rowFiller.setAttribute('style', 'background-color: white');
             } else if (board[i][j] == 2) {
                 //Player
                 rowFiller.setAttribute('class', j + ' filled');
@@ -285,7 +294,6 @@ export const levelBuild = function (number) {
         tableDiv.append(row);
         //count += 2;
     }
-
     return tableDiv;
 }
 
@@ -367,6 +375,9 @@ export async function move(dirction) {
                 } else if (player.level == 20) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
+                else if (player.level == 1){
+                    $(".filled").css('background-color', 'brown')
+                }
                 player.x += 1;
             }
             $(findY).find(findX).attr('id', 'player')
@@ -447,6 +458,9 @@ export async function move(dirction) {
                 } else if (player.level == 20) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
+                else if (player.level == 1){
+                    $(".filled").css('background-color', 'brown')
+                }
                 player.y -= 1;
             }
             $(findY).find(findX).attr('id', 'player')
@@ -524,6 +538,9 @@ export async function move(dirction) {
                 } else if (player.level == 20) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
+                else if (player.level == 1){
+                    $(".filled").css('background-color', 'brown')
+                }
                 player.x -= 1;
             }
             $(findY).find(findX).attr('id', 'player')
@@ -602,6 +619,9 @@ export async function move(dirction) {
                 } else if (player.level == 20) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
+                else if (player.level == 1){
+                    $(".filled").css('background-color', 'brown')
+                }
                 player.y += 1;
             }
             $(findY).find(findX).attr('id', 'player')
@@ -705,11 +725,11 @@ export async function nextLevel() {
         console.log(timeScoreBoard)
         console.log(moveScoreBoard)
         $('#board').replaceWith(levelBuild(player.level))
-
         timeTableGenerator();
         moveTableGenerator();
         topTime();
         topMove();
+        document.getElementById('currlevel').innerHTML = `<h1 style='font-weight: bold; font-family: Georgia'> Level: ${player.level}</h1>`
     }
 }
 
@@ -735,10 +755,10 @@ export async function timeUpdateBoard() {
     console.log(timeScoreBoard)
     let timeTable = document.createElement("table")
     timeTable.id = "times"
-    timeTable.style = "border: 2px solid black;border-collapse: collapse;width: 15%; background-color: powderblue; text-align: center"
+    timeTable.style = "width:50%;border:none;border-collapse: collapse; background-color: powderblue;text-align: center"
     //timeDiv.append(timeTable)
     let timeRowHeader = document.createElement("tr")
-    timeRowHeader.style = "background-color: blue; font-family: sans-serif;color: white"
+    timeRowHeader.style = "background-color: royalblue; font-family: sans-serif;color: white; text-align: left"
     let timeHeader0 = document.createElement("th")
     timeHeader0.innerText = ""
     let timeHeader1 = document.createElement("th")
@@ -801,10 +821,10 @@ export async function moveUpdateBoard() {
     //moveDiv.id = "moves"
     let moveTable = document.createElement("table")
     moveTable.id = "moves"
-    moveTable.style = "border: 2px solid black; width: 15%; border-collapse: collapse;background-color: tomato; text-align: center"
+    moveTable.style = "border: none;width:50%;border-collapse: collapse;background-color: tomato; text-align: center"
     //moveDiv.append(moveTable)
     let moveRowHeader = document.createElement("tr")
-    moveRowHeader.style = "background-color: red; color: white;font-family: sans-serif"
+    moveRowHeader.style = "background-color: red; color: white;font-family: sans-serif; text-align: left"
     let moveHeader0 = document.createElement("th")
     moveHeader0.innerText = ""
     let moveHeader1 = document.createElement("th")
@@ -842,10 +862,10 @@ export const timeTableGenerator = function () {
     })
     let timeTable = document.createElement("table")
     timeTable.id = "times"
-    timeTable.style = "border: 2px solid black;border-collapse: collapse;width: 15%; background-color: powderblue;text-align: center"
+    timeTable.style = "border: none;width:50%;border-collapse: collapse; background-color: powderblue;text-align: center"
     //timeDiv.append(timeTable)
     let timeRowHeader = document.createElement("tr")
-    timeRowHeader.style = "background-color: blue; font-family: sans-serif;color: white"
+    timeRowHeader.style = "background-color: royalblue; font-family: sans-serif;color: white; text-align: left"
     let timeHeader0 = document.createElement("th")
     timeHeader0.innerText = ""
     let timeHeader1 = document.createElement("th")
@@ -868,6 +888,7 @@ export const timeTableGenerator = function () {
     for (let i =0; i < 10 && i < timeScoreBoard.length; i++) {
         let e = timeScoreBoard[i]
         let timeRow = document.createElement("tr")
+        timeRow.style = '.td {border:none}'
         let timeData0 = document.createElement("td")
         timeData0.innerText = `${i+1}`
         let timeData1 = document.createElement("td")
@@ -896,9 +917,9 @@ export const moveTableGenerator = function () {
     })
     let moveTable = document.createElement("table")
     moveTable.id = "moves"
-    moveTable.style = "border: 2px solid black; width: 15%; border-collapse: collapse;background-color: tomato; text-align: center"
+    moveTable.style = "width:50%; border: none;border-collapse: collapse;background-color: tomato; text-align: center"
     let moveRowHeader = document.createElement("tr")
-    moveRowHeader.style = "background-color: red; color: white;font-family: sans-serif"
+    moveRowHeader.style = "background-color: red; color: white;font-family: sans-serif; text-align:left"
     let moveHeader0 = document.createElement("th")
     moveHeader0.innerText = ""
     let moveHeader1 = document.createElement("th")
@@ -935,12 +956,12 @@ export const topTime = function () {
             console.log("butter1");
             const $scorest = $('#scorest');
             $scorest.empty()
-            $scorest.append(`<h1>Top Time Score for ${rdx.player} : ${rdx.time}</h1>`);
+            $scorest.append(`<h2>Top Time Score for ${rdx.player} : ${rdx.time}</h1>`);
             break;
         }
         const $scorest = $('#scorest');
         $scorest.empty()
-        $scorest.append(`<h1>Top Time Score for ${rdx.player} : Not Available</h1>`);
+        $scorest.append(`<h2>Top Time Score for ${rdx.player} : Not Available</h1>`);
     }
 }
 
@@ -953,11 +974,11 @@ export const topMove = function () {
             console.log("cheese1");
             const $scoresm = $('#scoresm');
             $scoresm.empty()
-            $scoresm.append(`<h1>Top Move Score for ${rdx.player} : ${rdx.moves}</h1>`);
+            $scoresm.append(`<h2>Top Move Score for ${rdx.player} : ${rdx.moves}</h1>`);
             break;
         }
         const $scoresm = $('#scoresm');
         $scoresm.empty()
-        $scoresm.append(`<h1>Top Move Score for ${rdx.player} : Not Available</h1>`);
+        $scoresm.append(`<h2>Top Move Score for ${rdx.player} : Not Available</h1>`);
     }
 }

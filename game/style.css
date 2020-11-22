@@ -3,10 +3,6 @@
     margin: 0px;
 }
 
-/* div {
-    margin: 10px;
-} */
-
 table {
     width: 715px;
     padding: 0px;
@@ -35,8 +31,6 @@ td {
     background-color: greenyellow;
 }
 
-
-
 /* Panel and buttons */
 
 #buttonPanel {
@@ -45,5 +39,47 @@ td {
 
 button {
     width: 100px;
-    height: 75px
+    height: 75px;
+}
+
+button:hover {
+    opacity: 90%;
+}
+
+button:active {
+    transform: translateY(6px);
+}
+
+#times > tr:hover {
+    opacity: 60%;
+    font-weight: bold;
+}
+
+#moves > tr:hover {
+    opacity: 60%;
+    font-weight: bold;
+}
+
+#times > tr > td {
+    border:none;
+    padding-right: 8px;
+    padding-left: 4px;
+    font-family: Verdana;
+}
+
+#moves > tr > td {
+    border:none;
+    padding-right: 4px;
+    padding-left: 4px;
+    font-family: Verdana;
+}
+
+#times > tr > th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#moves > tr>  th {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
