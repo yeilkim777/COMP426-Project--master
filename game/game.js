@@ -2,7 +2,7 @@ import { levelArray } from "./getLevel.js"
 import { boardGet, boardSet } from "./backend-firestore.js"
 
 let x = 13;
-let y = 13;
+let y = 13; 
 let board = [];
 
 let player = {

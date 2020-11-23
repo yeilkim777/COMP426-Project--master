@@ -8,7 +8,7 @@ export function login() {
     let firebase = centralDataBase();
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
-    console.log('reach login')
+    console.log('reach login') 
     const email = txtEmail.value;
     const password = txtPassword.value;
     const auth = firebase.auth();

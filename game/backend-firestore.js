@@ -1,6 +1,6 @@
 import { centralDataBase  } from "../firebaseCentral.js"
 
-const database = centralDataBase().firestore();
+const database = centralDataBase().firestore(); 
 
 // export async function setData() {
 //     for (let i = 1; i <= 20; i ++) {
