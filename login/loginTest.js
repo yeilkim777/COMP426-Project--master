@@ -1,11 +1,8 @@
 import { centralDataBase } from "../firebaseCentral.js"
-//import { getUser } from "../game/game.js"
 
 $("#btnLogin").on('click', login)
 $("#btnSignUp").on('click', signUp)
 $("#btnLogout").on('click', logOut)
-
-// let testUser
 
 export function login() {
     let firebase = centralDataBase();

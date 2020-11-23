@@ -7,7 +7,7 @@ let board = [];
 
 let player = {
     //name: "player.name@".substring(0,firebaseUser.email.indexOf('@')),
-    name: ocalStorage.getItem('user'),
+    name: localStorage.getItem('user'),
     x: 0,
     y: 0,
     moves: 0,
@@ -388,7 +388,7 @@ export async function move(dirction) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
                 else if (player.level == 1){
-                    $(".filled").css('background-color', 'brown')
+                    $(".filled").css('background-color', 'greenyellow')
                 }
                 player.x += 1;
             }
@@ -473,7 +473,7 @@ export async function move(dirction) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
                 else if (player.level == 1){
-                    $(".filled").css('background-color', 'brown')
+                    $(".filled").css('background-color', 'greenyellow')
                 }
                 player.y -= 1;
             }
@@ -555,7 +555,7 @@ export async function move(dirction) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
                 else if (player.level == 1){
-                    $(".filled").css('background-color', 'brown')
+                    $(".filled").css('background-color', 'greenyellow')
                 }
                 player.x -= 1;
             }
@@ -638,7 +638,7 @@ export async function move(dirction) {
                     $(".filled").css('background-color', 'greenyellow')
                 } 
                 else if (player.level == 1){
-                    $(".filled").css('background-color', 'brown')
+                    $(".filled").css('background-color', 'greenyellow')
                 }
                 player.y += 1;
             }
