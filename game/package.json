@@ -4,11 +4,11 @@
     "axios": "file:node_modules/axios",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "data-store": "^4.0.3", 
+    "data-store": "^4.0.3",
     "express": "^4.17.1",
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
-    "jquery": "^3.5.1"
+    "jquery": "file:node_modules/jquery"
   },
   "name": "comp426-project-",
   "description": "COMP 426 Project: Color Maze",

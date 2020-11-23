@@ -34,3 +34,7 @@ body {
     color: #212529;
     background-color: #fff;
 }
+
+.container {
+    width: 300px
+}

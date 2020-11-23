@@ -1,13 +1,16 @@
 import { levelArray } from "./getLevel.js"
 import { boardGet, boardSet } from "./backend-firestore.js"
+import { centralDataBase } from "../firebaseCentral.js"
 
 let x = 13;
 let y = 13; 
 let board = [];
 
+let userNameWithoutGmail = localStorage.getItem('user');
+
 let player = {
     //name: "player.name@".substring(0,firebaseUser.email.indexOf('@')),
-    name: localStorage.getItem('user'),
+    name: userNameWithoutGmail.substring(0, userNameWithoutGmail.indexOf("@")),
     x: 0,
     y: 0,
     moves: 0,
@@ -265,6 +268,8 @@ export async function loadGame() {
     $root.on('click', "#move", moveUpdateBoard);//add in new player object to the array, it also returns the updated array
     topTime();
     topMove();
+
+    $root.on('click', '#LogOut', gameLogOut)
 
     // create keyboard functionality all of them
 
@@ -1055,4 +1060,12 @@ export const topMove = function () {
         $scoresm.append(`<h3 style="align-self:center">Top Move Score:</h1>`);
         $scoresm.append(`<h3 style="color: darkred;align-self:center">N/A</h3>`)
     }
+}
+
+export const gameLogOut = function () {
+    // logOut(); 
+    window.localStorage.removeItem('user')
+    let firebase = centralDataBase();
+    firebase.auth().signOut();
+    window.location.href = '../login'
 }

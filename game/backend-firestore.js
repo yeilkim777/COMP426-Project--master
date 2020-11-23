@@ -8,13 +8,13 @@ const database = centralDataBase().firestore();
 //         await database.collection(set).doc('time').set({
 //             'body':[]
 //         })
-//         await database.collection(set).doc('move').set({
+//         await database.collection(set).doc('moves').set({
 //             'body':[]
 //         })
 //     }
 // }
 
-// setData()
+//setData()
 
 export async function boardSet(id, type, array) {//set parameter to array
     let stid = id.toString();
