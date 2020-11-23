@@ -4,11 +4,13 @@ $("#btnLogin").on('click', login)
 $("#btnSignUp").on('click', signUp)
 $("#btnLogout").on('click', logOut)
 
+logOut();
+
 export function login() {
     let firebase = centralDataBase();
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
-    console.log('reach login') 
+    console.log('reach login')
     const email = txtEmail.value;
     const password = txtPassword.value;
     const auth = firebase.auth();
@@ -21,6 +23,7 @@ export function login() {
             console.log('logged in as: ' + firebaseUser.email);
             // testUser = firebaseUser.email;
             // getUser(firebaseUser.email)
+            $("#text1").hide();
 
             window.localStorage.setItem('user',firebaseUser.email);
             btnLogout.classList.remove('hide');
@@ -66,6 +69,7 @@ export function signUp() {
             // console.log(firebaseUser)
             console.log('logged in as: ' + firebaseUser.email);
             btnLogout.classList.remove('hide');
+            $("#text1").show();
         } else {
             console.log('not logged in');
             btnLogout.classList.add('hide');
