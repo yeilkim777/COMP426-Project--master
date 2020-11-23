@@ -112,13 +112,13 @@ export async function loadGame() {
         timeTableGenerator();
         topTime();
         topMove();
-    }, 10000);
+    }, 5000);
 
     window.setInterval(function () {
         moveTableGenerator()
         topTime();
         topMove();
-    }, 10000);
+    }, 5000);
     $(document).keydown(async function (e) {
         switch (e.keyCode) { // move to seperate function and make it return something
             case 39:
@@ -234,16 +234,23 @@ export async function loadGame() {
                 }
                 break;
 
-            case 78: // Press N to go to next level
+            case 68: // Press D to go to next level
                 nextLevel()
                 break;
             // turn these into functions
-            case 82: // Press R to reset level
+            case 83: // Press S to reset level
                 resetBoard()
                 break
 
-            case 80:
+            case 65: // Press A to go to previous level 
                 previousBoard()
+                break
+            case 70: // Press F to save time
+
+                timeUpdateBoard()
+                break
+            case 71: // Press G to save move
+                moveUpdateBoard()
                 break
         }
     })
