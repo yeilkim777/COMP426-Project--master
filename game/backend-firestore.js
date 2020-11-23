@@ -1,4 +1,4 @@
-import {centralDataBase} from "../firebaseCentral.js"
+import { centralDataBase  } from "../firebaseCentral.js"
 
 const database = centralDataBase().firestore();
 
