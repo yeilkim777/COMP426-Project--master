@@ -24,6 +24,7 @@ export function login() {
 
             window.localStorage.setItem('user',firebaseUser.email);
             btnLogout.classList.remove('hide');
+            window.location.href = "../game"
         } else {
             console.log('not logged in');
             btnLogout.classList.add('hide');

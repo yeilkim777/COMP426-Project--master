@@ -56,10 +56,13 @@ export async function loadGame() {
 
     let lefterDiv = document.createElement('div')
     lefterDiv.id = 'lefterDiv'
-    lefterDiv.style = 'width:200px;font-family: Verdana; font-size: 15px;background-color: crimson;display:flex; flex-direction: column;'
+    lefterDiv.style = 'margin-top:20px;height:190px;font-size: 15px;background-color: crimson;display:flex; flex-direction: column;align-items: center; justify-content: flex-start'
+    lefterDiv.innerHTML = (`<div id='lefterDivButtons' style='width:250px;height:100px;display:flex; justify-content: space-around; align-items:center'><button id='LogOut' style='background-color: maroon; box-shadow: 0 6px #999;border-radius:32px; border:solid; color:white'>Log Out</button><button id='flush' style ='background-color: black; box-shadow: 0 6px #999;border-radius:32px; border:solid; color:white'>Delete Data</button></div>`)
+    lefterDiv.innerHTML += (`<h3 style="align-self: flex-start; font-size: 20px; color: white;font-family: Lucida; margin-left: 15px">Search:</h3>`)
+    lefterDiv.innerHTML += (`<form><input type='text' id='search' placeholder='search here'><input type='submit' value='Submit'></form>`)
     leftDiv.append(lefterDiv)
 
-    $root.append(leftDiv)
+    $root.append(leftDiv) 
 
 
     let midDiv = document.createElement('div')
@@ -384,7 +387,7 @@ export async function move(dirction) {
                 } else if (player.level == 15) {
                     $(".filled").css('background-color', '#ffc82a')
                 } else if (player.level == 16) {
-                    $(".filled").css('background-color', '#ffb3be')
+                    $(".filled").css('background-color', '#E52B50')
                 } else if (player.level == 17) {
                     $(".filled").css('background-color', '#0bf9ea')
                 } else if (player.level == 18) {
@@ -469,7 +472,7 @@ export async function move(dirction) {
                 } else if (player.level == 15) {
                     $(".filled").css('background-color', '#ffc82a')
                 } else if (player.level == 16) {
-                    $(".filled").css('background-color', '#ffb3be')
+                    $(".filled").css('background-color', '#E52B50')
                 } else if (player.level == 17) {
                     $(".filled").css('background-color', '#0bf9ea')
                 } else if (player.level == 18) {
@@ -551,7 +554,7 @@ export async function move(dirction) {
                 } else if (player.level == 15) {
                     $(".filled").css('background-color', '#ffc82a')
                 } else if (player.level == 16) {
-                    $(".filled").css('background-color', '#ffb3be')
+                    $(".filled").css('background-color', '#E52B50')
                 } else if (player.level == 17) {
                     $(".filled").css('background-color', '#0bf9ea')
                 } else if (player.level == 18) {
@@ -634,7 +637,7 @@ export async function move(dirction) {
                 } else if (player.level == 15) {
                     $(".filled").css('background-color', '#ffc82a')
                 } else if (player.level == 16) {
-                    $(".filled").css('background-color', '#ffb3be')
+                    $(".filled").css('background-color', '#E52B50')
                 } else if (player.level == 17) {
                     $(".filled").css('background-color', '#0bf9ea')
                 } else if (player.level == 18) {

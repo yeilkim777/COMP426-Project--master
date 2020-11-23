@@ -83,3 +83,15 @@ button:active {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+h3 {
+    margin: 5px;
+}
+
+#righterDiv {
+    height: 175px;
+}
+
+#lefterDiv {
+    height: 175px; 
+}
