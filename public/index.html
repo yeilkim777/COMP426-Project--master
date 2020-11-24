@@ -20,7 +20,7 @@
                 </span>
             <div class="login">
                 <div id="buttons">
-                    <input id="txtEmail" type="text" placeholder="Username" maxlength="8">
+                    <input id="txtEmail" type="text" placeholder="Username">
                     <input id="txtPassword" type="password" placeholder="Password">
                     <button id="btnLogin" class="btn btn-action">Log in</button>
                     <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
@@ -31,7 +31,13 @@
                     <span id="text4" style="display:none">Signup unsuccessful</span>
                     <span id="text5" style="display:none">Login unsuccessful</span>
                 </div>
-                <div class="instructions"> 
+                <div id="message">
+                    <span id="text6" style="display:none">Password should be at least 6 characters</span>
+                    <span id="text7" style="display:none">Username already in use</span>
+                    <span id="text8" style="display:none">Password invalid</span>
+                    <span id="text9" style="display:none">Username is badly formatted</span>
+                </div>
+                <div class="instructions">
                     <span class="instr">
                         Instructions:
                         <p>~</p>
