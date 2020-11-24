@@ -17,7 +17,7 @@ export function login() {
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
     console.log('reach login')
-    const email = txtEmail.value;
+    const email = txtEmail.value + '@gmail.com';
     const password = txtPassword.value;
     const auth = firebase.auth();
     // sign in 
@@ -29,6 +29,7 @@ export function login() {
             hideAll();
             $("#text2").show();
             window.localStorage.setItem('user',firebaseUser.email);
+            window.location.href = "../game"
         } else {
             console.log('not logged in');
             hideAll();
@@ -48,7 +49,7 @@ export function signUp() {
 
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
-    const email = txtEmail.value;
+    const email = txtEmail.value + "@gmail.com";
     const password = txtPassword.value;
     const auth = firebase.auth();
     // create user
@@ -59,6 +60,7 @@ export function signUp() {
             console.log('logged in as: ' + firebaseUser.email);
             hideAll();
             $("#text1").show();
+            
         } else {
             hideAll();
             $("#text4").show();

@@ -59,7 +59,7 @@ input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 
 .instructions {
     font-weight: bold;
-    padding-top: 70px;
+    padding-top: 10px;
 }
 
 body {

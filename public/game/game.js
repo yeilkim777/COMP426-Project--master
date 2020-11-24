@@ -934,7 +934,7 @@ export const gameLogOut = function () {
     window.localStorage.removeItem('user')
     let firebase = centralDataBase();
     firebase.auth().signOut();
-    window.location.href = '../login' 
+    // window.location.href = '../login' 
     window.location.href = '../' // would be easier to put the login into the main directory instread of folder
 }
 
