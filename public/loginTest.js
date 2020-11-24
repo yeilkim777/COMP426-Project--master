@@ -16,7 +16,6 @@ export function login() {
     let firebase = centralDataBase();
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
-    console.log('reach login')
     const email = txtEmail.value + '@gmail.com';
     const password = txtPassword.value;
     const auth = firebase.auth();
@@ -25,13 +24,13 @@ export function login() {
     promise.catch(e => console.log(e.message));
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            console.log('logged in as: ' + firebaseUser.email);
+            // console.log('logged in as: ' + firebaseUser.email);
             hideAll();
             $("#text2").show();
             window.localStorage.setItem('user',firebaseUser.email);
             window.location.href = "../game"
         } else {
-            console.log('not logged in');
+            // console.log('not logged in');
             hideAll();
             $("#text5").show();
         }
@@ -57,14 +56,14 @@ export function signUp() {
     promise.catch(e => console.log(e.message));
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            console.log('logged in as: ' + firebaseUser.email);
+            // console.log('logged in as: ' + firebaseUser.email);
             hideAll();
             $("#text1").show();
             
         } else {
             hideAll();
             $("#text4").show();
-            console.log('not logged in');
+            // console.log('not logged in');
         }
     });
 }

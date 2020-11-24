@@ -43,7 +43,7 @@ let myTime = null;
 
 export async function loadGame() {
     const $root = $('#root')
-    console.log($root.data('user'))
+    // console.log($root.data('user'))
     timeScoreBoard = await getTimeBoard(player.level);
     moveScoreBoard = await getMoveBoard(player.level);
     let timetable = document.createElement('table')
@@ -111,8 +111,8 @@ export async function loadGame() {
     rightDiv.append(righterDiv)
     $root.append(rightDiv)
 
-    console.log(timeScoreBoard);
-    console.log(moveScoreBoard);
+    // console.log(timeScoreBoard);
+    // console.log(moveScoreBoard);
     timeTableGenerator();
     moveTableGenerator();
     window.setInterval(function () {
@@ -209,7 +209,7 @@ export async function move(dirction) {
                 if (player.moves >= minMove) {
                     player.won = boardChecker()
                     if (player.won) {
-                        console.log('Won')
+                        // console.log('Won')
 
                         stopWatch = Date.now() - stopWatch;
                         clearInterval(myTime);
@@ -219,7 +219,7 @@ export async function move(dirction) {
                         $timeboard.append(`<h1>Time: ${player.time}</h1>`);
                         cansavetime = true;
                         cansavemove = true;
-                        console.log(player.time);
+                        // console.log(player.time);
                     }
                 }
 
@@ -294,7 +294,7 @@ export async function move(dirction) {
                 if (player.moves >= minMove) {
                     player.won = boardChecker()
                     if (player.won) {
-                        console.log('Won')
+                        // console.log('Won')
 
                         stopWatch = Date.now() - stopWatch;
                         clearInterval(myTime);
@@ -304,7 +304,7 @@ export async function move(dirction) {
                         $timeboard.append(`<h1>Time: ${player.time}</h1>`);
                         cansavetime = true;
                         cansavemove = true;
-                        console.log(player.time);
+                        // console.log(player.time);
                     }
                 }
                 (Math.round(player.time * 100) / 100).toFixed(2);
@@ -377,7 +377,7 @@ export async function move(dirction) {
                 if (player.moves >= minMove) {
                     player.won = boardChecker()
                     if (player.won) {
-                        console.log('Won')
+                        // console.log('Won')
 
                         stopWatch = Date.now() - stopWatch;
                         clearInterval(myTime);
@@ -387,7 +387,7 @@ export async function move(dirction) {
                         $timeboard.append(`<h1>Time: ${player.time}</h1>`);
                         cansavetime = true;
                         cansavemove = true;
-                        console.log(player.time);
+                        // console.log(player.time);
                     }
                 }
 
@@ -460,7 +460,7 @@ export async function move(dirction) {
                 if (player.moves >= minMove) {
                     player.won = boardChecker();
                     if (player.won) {
-                        console.log('Won')
+                        // console.log('Won')
 
                         stopWatch = Date.now() - stopWatch;
                         clearInterval(myTime);
@@ -470,7 +470,7 @@ export async function move(dirction) {
                         $timeboard.append(`<h1>Time: ${player.time}</h1>`);
                         cansavetime = true;
                         cansavemove = true;
-                        console.log(player.time);
+                        // console.log(player.time);
                     }
                 }
 
@@ -555,14 +555,14 @@ export async function updateBoard(id, type, array) {
 
 export async function previousBoard() {
     if (player.level - 1 != 0) {
-        console.log('previousLevel')
+        // console.log('previousLevel')
         player.level -= 1; // Go to Next Level
         player.won = false;
         player.time = 0;
         player.moves = 0;
         stopWatch = 0;
         firstMove = true;
-        console.log(player.level)
+        // console.log(player.level)
         clearInterval(myTime);
         const $timeboard = $('#timeboard');
         $timeboard.empty();
@@ -584,7 +584,7 @@ export async function previousBoard() {
 }
 
 export const resetBoard = function () {
-    console.log('reset Level')
+    // console.log('reset Level')
     cashmoneyglock() 
     //player.level += 1; // Go to Next Level
     player.won = false;
@@ -599,7 +599,7 @@ export const resetBoard = function () {
     const $moveboard = $('#moveboard');
     $moveboard.empty();
     $moveboard.append(`<h1>Moves: ${player.moves}</h1>`);
-    console.log(player.level)
+    // console.log(player.level)
     $('#board').replaceWith(levelBuild(player.level))
     timeTableGenerator();
     moveTableGenerator();
@@ -611,7 +611,7 @@ export const resetBoard = function () {
 
 export async function nextLevel() {
     if (player.level + 1 != 21) {
-        console.log('nextLevel')
+        // console.log('nextLevel')
         player.level += 1; // Go to Next Level
         player.won = false;
         player.time = 0;
@@ -625,11 +625,11 @@ export async function nextLevel() {
         const $moveboard = $('#moveboard');
         $moveboard.empty();
         $moveboard.append(`<h1>Moves: ${player.moves}</h1>`);
-        console.log(player.level)
+        // console.log(player.level)
         timeScoreBoard = await getTimeBoard(player.level);
         moveScoreBoard = await getMoveBoard(player.level);
-        console.log(timeScoreBoard)
-        console.log(moveScoreBoard)
+        // console.log(timeScoreBoard)
+        // console.log(moveScoreBoard)
         $('#board').replaceWith(levelBuild(player.level))
         timeTableGenerator();
         moveTableGenerator();
@@ -661,7 +661,7 @@ export async function timeUpdateBoard() {
         })
         await updateBoard(player.level, "time", timeScoreBoard)
         timeScoreBoard = await getTimeBoard(player.level);
-        console.log(timeScoreBoard)
+        // console.log(timeScoreBoard)
         let timeTable = document.createElement("table")
         timeTable.id = "times"
         timeTable.style = "width: 250px;border:none;border-collapse: collapse; background-color: powderblue;text-align: center"
@@ -736,7 +736,7 @@ export async function moveUpdateBoard() {
         })
         await updateBoard(player.level, 'move', moveScoreBoard)
         moveScoreBoard = await getMoveBoard(player.level);
-        console.log(moveScoreBoard);
+        // console.log(moveScoreBoard);
 
         //let moveDiv = document.createElement("div")
         //moveDiv.id = "moves"
