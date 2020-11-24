@@ -59,11 +59,11 @@ export async function loadGame() {
 
     let lefterDiv = document.createElement('div')
     lefterDiv.id = 'lefterDiv'
-    lefterDiv.style = 'margin-top:20px;height:350px;font-size: 15px;background-color: crimson;display:flex; flex-direction: column;align-items: center; justify-content: flex-start'
+    lefterDiv.style = 'margin-top:20px;height:300px;font-size: 15px;background-color: crimson;display:flex; flex-direction: column;align-items: center; justify-content: flex-start'
     lefterDiv.innerHTML = (`<div id='lefterDivButtons' style='width:250px;height:70px;display:flex; justify-content: space-around; align-items:center'><button id='LogOut' style='height: 60px; width: 80px;background-color: maroon; box-shadow: 0 6px #999;border-radius:32px; border:solid; color:white'>Log Out</button><button id='flush' style ='height:60px;width:80px;background-color: black; box-shadow: 0 6px #999;border-radius:32px; border:solid; color:white'>Delete Data</button></div>`)
     lefterDiv.innerHTML += (`<h4 id = "searchtext" style="height: 30px;align-self: flex-start; margin: 5px; margin-left: 30px;font-size: 20px; color: white;font-family: Verdana; margin-left: 15px">Search:</h4>`)
     lefterDiv.innerHTML += (`<form><input type='text' id='search' placeholder='search here'>`)
-    lefterDiv.innerHTML += (`<div style='height: 170px; width:180px;margin-top: 10px;color-white; background-color: coral'id='searchResults'></div>`)
+    lefterDiv.innerHTML += (`<div style='height: 130px; width:180px;margin-top: 10px;color-white; background-color: coral'id='searchResults'></div>`)
     leftDiv.append(lefterDiv)
 
     $root.append(leftDiv)   
@@ -307,6 +307,7 @@ export async function move(dirction) {
                         console.log(player.time);
                     }
                 }
+                (Math.round(player.time * 100) / 100).toFixed(2);
 
                 return doneMove = true;
             } else if (board[player.y][player.x] >= 1) {
@@ -1236,9 +1237,12 @@ function placeCompleter(num) {
     else if (num =='3') {
         return num + 'rd'
     }
-    else {
+    else if (num == 'N/A1') {
+        return 'N/A'
+    } else {
         return num +'th'
-    }
+    } 
+
 }
 
 export async function cashmoneyglock() {
