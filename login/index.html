@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
-<body style="background-image: url(https://colorlib.com/etc/lf/Login_v4/images/bg-01.jpg);">
+<body id="body">
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -18,18 +18,29 @@
             <span class="login-title p">
                 Color Maze
                 </span>
-            <input id="txtEmail" type="text" placeholder="Username">
-            <input id="txtPassword" type="password" placeholder="Password">
-            <button id="btnLogin" class="btn btn-action">Log in</button>
-            <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-            <button id="btnLogout" class="btn btn-action hide">Log Out</button>
-            <div id="text">
-                <span id="text1" style="display:none">Signup successful, press login to continue</span>
+            <div class="login">
+                <div id="buttons">
+                    <input id="txtEmail" type="text" placeholder="Username">
+                    <input id="txtPassword" type="password" placeholder="Password">
+                    <button id="btnLogin" class="btn btn-action">Log in</button>
+                    <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                </div>
+                <div id="text">
+                    <span id="text1" style="display:none">Signup successful, login to continue</span>
+                    <span id="text2" style="display:none">Login successful</span>
+                    <span id="text4" style="display:none">Signup unsuccessful</span>
+                    <span id="text5" style="display:none">Login unsuccessful</span>
+                </div>
+                <div class="instructions">
+                    <span class="instr">
+                        Instructions:
+                        <p>~</p>
+                        <p>Use the arrow keys to fill in all the empty squares</p>
+                        <p>~</p>
+                        <p>Do it in the fewest moves or least time to get on the leaderboards!</p>
+                        <p>~</p>
+                    </span>
             </div>
-            <div class="instructions">
-                <span class="instr">
-                    Instructions:
-                </span>
             </div>
         </div>
     </div>
