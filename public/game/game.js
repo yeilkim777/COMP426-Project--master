@@ -71,13 +71,13 @@ export async function loadGame() {
 
     let midDiv = document.createElement('div')
     midDiv.id = 'midDiv'
-    midDiv.style = 'display:flex; flex-direction: column; align-items: center    '
+    midDiv.style = 'display:flex; flex-direction: column; align-items: center; width: 770px  '
     let midDivTop = document.createElement('div')
     midDivTop.id = 'midDivTop'
-    midDivTop.style = 'display:flex;justify-content: space-between'
+    midDivTop.style = 'display:flex; width: 790px; justify-content: space-between'
     midDivTop.innerHTML = (`<button style='margin-bottom: 15px;box-shadow: 0 6px #999;border-radius:32px; border:solid;background-color: royalblue;color:white;font-family: Lucida Sans Unicode' id = 'time'>Save Time (T)</button>`)
-    midDivTop.innerHTML += (`<div style='margin-right: 20px;margin-left:20px; width: 200px'id = 'timeboard'><h1>Time: ${player.time}</h1></div>`)
-    midDivTop.innerHTML += (`<div id="currlevel"><h1 style='text-align: center;font-weight: bold; font-family: Georgia'> Level: ${player.level}</h1></div>`)
+    midDivTop.innerHTML += (`<div style='margin-right: 20px;margin-left:20px; width: 180px'id = 'timeboard'><h1>Time: ${player.time}</h1></div>`)
+    midDivTop.innerHTML += (`<div id="currlevel"><h1 style='text-align: center;font-weight: bold;  font-family: Georgia:'> Level: ${player.level}</h1></div>`)
     midDivTop.innerHTML += (`<div style = 'text-align: center;margin-right: 20px;margin-left:20px; width: 150px' id = 'moveboard'><h1>Moves: ${player.moves}</h1></div>`)
     midDivTop.innerHTML += (`<button style='box-shadow: 0 6px #999;    border-radius:32px; border:solid;background-color: red;color:white;font-family: Lucida Sans Unicode'id = 'move'>Save Move (M)</button>`)
     midDiv.append(midDivTop)
@@ -1092,10 +1092,16 @@ export async function keyDownEventListener(e) {
             case 82: // Press R to reset level
                 resetBoard()
                 break
-
-            case 80:
+            case 80: // Press P to go to previous level
                 previousBoard()
                 break
+            case 84: // Press T to save time
+                timeUpdateBoard();
+            break
+
+            case 77: // Press M to save moves
+                moveUpdateBoard();
+            break
         }
     }
 }
