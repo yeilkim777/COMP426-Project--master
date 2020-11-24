@@ -2,7 +2,6 @@ import { centralDataBase } from "../firebaseCentral.js"
 
 $("#btnLogin").on('click', login)
 $("#btnSignUp").on('click', signUp)
-$("#btnLogout").on('click', logOut)
 
 logOut();
 
@@ -30,12 +29,10 @@ export function login() {
             hideAll();
             $("#text2").show();
             window.localStorage.setItem('user',firebaseUser.email);
-            btnLogout.classList.add('hide');
         } else {
             console.log('not logged in');
             hideAll();
             $("#text5").show();
-            btnLogout.classList.add('hide');
         }
     });
 }
@@ -60,14 +57,12 @@ export function signUp() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             console.log('logged in as: ' + firebaseUser.email);
-            btnLogout.classList.remove('hide');
             hideAll();
             $("#text1").show();
         } else {
             hideAll();
             $("#text4").show();
             console.log('not logged in');
-            btnLogout.classList.add('hide');
         }
     });
 }
